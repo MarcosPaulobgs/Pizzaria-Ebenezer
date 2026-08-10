@@ -399,8 +399,8 @@ nav.menu-desktop a:hover::after{ width:100%; }
 }
 .plano.destaque{
     border-color:var(--dourado-crosta);
-    box-shadow:0 0 0 4px rgba(242,183,5,0.35);
-    transform:translateY(-8px);
+    box-shadow:0 12px 0 4px rgba(242,183,5,0.35), 0 20px 30px rgba(0,0,0,0.3);
+    transform:translateY(-20px);
 }
 .plano .rotulo-popular{
     align-self:flex-start;
@@ -414,18 +414,18 @@ nav.menu-desktop a:hover::after{ width:100%; }
     border-radius:999px;
     margin-bottom:14px;
 }
-.plano h3{ font-size:1.2rem; margin-bottom:6px; }
+.plano h3{ font-size:1.35rem; margin-bottom:6px; }
 .plano .preco{
     font-family:var(--fonte-titulo);
-    font-size:2.1rem;
+    font-size:2.4rem;
     color:var(--vermelho-molho);
     margin:10px 0 4px;
 }
-.plano .preco small{ font-size:0.9rem; font-family:var(--fonte-texto); color:var(--carvao-suave); }
+.plano .preco small{ font-size:1rem; font-family:var(--fonte-texto); color:var(--carvao-suave); }
 .plano ul{ margin:18px 0 26px; flex-grow:1; }
 .plano ul li{
-    font-size:0.92rem;
-    padding:7px 0;
+    font-size:1.05rem;
+    padding:9px 0;
     border-bottom:1px dashed #E4D6BE;
     display:flex;
     gap:8px;
