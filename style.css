@@ -1,0 +1,767 @@
+ /* ============================================================
+     PIZZARIA EBENÉZER — conceito "Fornalha de Bairro"
+     Paleta tirada do logo (vermelho molho, verde manjericão, dourado
+     crosta) + fita/ribbon do logo reaproveitada como selo de seção.
+     ============================================================ */
+
+
+     /* Reset */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+/* ------------------------------------------------------------------------------------ */
+
+/* body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+  :root{
+    --vermelho-molho:#C1272D;
+    --vermelho-molho-escuro:#8F1B20;
+    --verde-manjericao:#1B5E3A;
+    --verde-manjericao-escuro:#123F27;
+    --dourado-crosta:#F2B705;
+    --dourado-crosta-escuro:#C9930A;
+    --creme-massa:#FFF8EC;
+    --branco-muçarela:#FFFDF7;
+    --carvao:#2B1B12;
+    --carvao-suave:#5B473C;
+
+    --fonte-titulo:'Baloo 2', system-ui, sans-serif;
+    --fonte-texto:'Nunito Sans', system-ui, sans-serif;
+
+    --raio-grande: 28px;
+    --raio-medio: 18px;
+    --sombra-card: 0 14px 32px rgba(43,27,18,0.12);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    /* min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
+    font-family:var(--fonte-texto);
+    color:var(--carvao);
+    background:var(--creme-massa);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  section{ position:relative; }
+  
+  
+  .container{
+    width:100%;
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  h1,h2,h3,h4{
+    font-family:var(--fonte-titulo);
+    font-weight:700;
+    line-height:1.12;
+    color:var(--carvao);
+  }
+  .destaque-verde{ color:var(--verde-manjericao); }
+  .destaque-vermelho{ color:var(--vermelho-molho); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  :focus-visible{
+    outline:3px solid var(--dourado-crosta-escuro);
+    outline-offset:3px;
+  }
+
+  /* ---------- Faixa/etiqueta em formato de fita, igual ao ribbon do logo ---------- */
+  .etiqueta-fita{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--verde-manjericao);
+    color:var(--branco-muçarela);
+    font-family:var(--fonte-titulo);
+    font-weight:600;
+    font-size:0.82rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:9px 22px;
+    position:relative;
+    clip-path:polygon(3% 0, 97% 0, 100% 50%, 97% 100%, 3% 100%, 0% 50%);
+  }
+
+  /* ---------- Botões ---------- */
+  .botao{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-family:var(--fonte-titulo);
+    font-weight:700;
+    font-size:1.02rem;
+    padding:16px 34px;
+    border-radius:999px;
+    border:3px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+ .botao-primario{
+    background:var(--dourado-crosta);
+    color: black;
+    box-shadow:0 8px 0 var(--dourado-crosta-escuro);
+}
+.botao-primario:hover{
+    box-shadow:0 10px 0 var(--dourado-crosta-escuro);
+}
+.botao-primario:active{ transform:translateY(4px); box-shadow:0 3px 0 var(--dourado-crosta-escuro); }
+
+.botao-secundario{
+    background:transparent;
+    border-color:var(--branco-muçarela);
+    color:var(--branco-muçarela);
+}
+.botao-secundario:hover{ background:rgba(255,255,255,0.12); }
+
+.botao-escuro{
+    background:var(--verde-manjericao);
+    color:var(--branco-muçarela);
+    box-shadow:0 8px 0 var(--verde-manjericao-escuro);
+}
+.botao-escuro:hover{
+    box-shadow:0 10px 0 var(--verde-manjericao-escuro);
+}
+.botao-escuro:active{ transform:translateY(4px); box-shadow:0 3px 0 var(--verde-manjericao-escuro); }
+
+.botao-bloco{ width:100%; }
+  /* ============================================================
+     HEADER
+     ============================================================ */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:var(--branco-muçarela);
+    border-bottom:3px solid var(--carvao);
+  }
+  .header-conteudo{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 24px;
+  }
+  .marca{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .marca img{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+  }
+  .marca span{
+    font-family:var(--fonte-titulo);
+    font-weight:800;
+    font-size:1.15rem;
+    color:var(--vermelho-molho);
+  }
+  .marca small{
+    display:block;
+    font-family:var(--fonte-texto);
+    font-weight:700;
+    font-size:0.68rem;
+    color:var(--verde-manjericao);
+    letter-spacing:0.06em;
+  }
+  nav.menu-desktop{
+    display:flex;
+    gap:32px;
+    font-weight:700;
+    font-size:0.95rem;
+  }
+  nav.menu-desktop a{ position:relative; padding:6px 0; }
+  nav.menu-desktop a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0%; height:3px;
+    background:var(--dourado-crosta-escuro);
+    transition:width .2s ease;
+  }
+  nav.menu-desktop a:hover::after{ width:100%; }
+  .header-cta{ display:none; }
+  @media (min-width:860px){ .header-cta{ display:inline-flex; padding:12px 24px; font-size:0.9rem; } }
+  @media (max-width:859px){ nav.menu-desktop{ display:none; } }
+
+  /* ============================================================
+     HERO — arco de forno a lenha em degradê vermelho > carvão,
+     com o prato de pizza "saindo" do arco.
+     ============================================================ */
+  .hero{
+    position: relative;
+    background:
+      radial-gradient(ellipse at 50% 120%, rgba(242,183,5,0.35), transparent 60%),
+      linear-gradient(180deg, var(--vermelho-molho-escuro) 0%, var(--carvao) 100%);
+    color:var(--branco-muçarela);
+    padding:64px 0 0;
+    overflow:hidden;
+  }
+.titulo-com-pizza{
+    position: relative;
+}
+
+.elemento-pizza{
+    position: absolute;
+    left: -500px;
+    top: 20px;
+    width: 500px;
+    transform: rotate(-9deg);
+    filter: drop-shadow(0 12px 20px rgba(0,0,0,0.4));
+    z-index: 2;
+}
+
+@media (max-width: 600px){
+  .elemento-pizza{
+    display: none;
+  }
+}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
+    align-items:center;
+    padding-bottom:40px;
+  }
+  @media (min-width:900px){
+    .hero-grid{ grid-template-columns:1.1fr 0.9fr; gap:24px; }
+  }
+  .hero-texto .etiqueta-fita{ margin-bottom:22px; }
+  .hero h1{
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    color:var(--branco-muçarela);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--dourado-crosta);
+  }
+  .hero p.sub{
+    margin-top:20px;
+    font-size:1.12rem;
+    max-width:520px;
+    color:#F4E7CF;
+  }
+  .hero-acoes{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .hero-selo{
+    margin-top:28px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:0.9rem;
+    color:#E8D4B4;
+  }
+  .hero-selo strong{ color:var(--dourado-crosta); font-family:var(--fonte-titulo); }
+
+  /* "Forno" ilustrado só com forma/cor, sem depender de foto */
+  .carrossel{
+    max-width: 400px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5%;
+    position: relative;
+    margin: 0 auto; /* centraliza por padrão (mobile) */
+}
+
+@media (min-width:900px){
+  .carrossel{
+    margin-left: auto;
+    margin-right: -100px;
+  }
+}
+
+  .slides {
+    display: flex;
+  }
+
+  .slides img{
+    display: block;
+    max-width: 100%;
+  }
+
+ .botões{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+  #left, #right{
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    border: none;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#left:hover, #right:hover{
+    background: rgba(0,0,0,0.8);
+    transform: scale(1.1);
+}
+
+.indicadores{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.ponto{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.ponto.ativo{
+    background: #fff;
+    transform: scale(1.3);
+}
+
+
+  .forno-arco{
+    width:min(360px, 80vw);
+    aspect-ratio:1/1;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 35% 30%, #FFDE7A, var(--dourado-crosta) 45%, var(--dourado-crosta-escuro) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 30px 60px rgba(0,0,0,0.45);
+    position:relative;
+  }
+  .forno-arco::before{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border-radius:50%;
+    border:4px dashed rgba(43,27,18,0.25);
+  }
+  .forno-arco img{
+    width:78%;
+    border-radius:50%;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+  }
+  /* PLACEHOLDER: troque .forno-arco img por foto real de uma pizza saindo do forno,
+     fotografada de cima, fundo escuro, em .jpg/.webp de alta resolução */
+  .brasa{
+    position:absolute;
+    border-radius:50%;
+    background:var(--vermelho-molho);
+    filter:blur(1px);
+    opacity:0.85;
+  }
+
+  /* ============================================================
+     PROVA SOCIAL — barra de números
+     ============================================================ */
+  .prova-social{
+    background: var(--verde-manjericao);
+    color: var(--branco-muçarela);
+    padding: 36px 0;
+}
+
+.prova-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    text-align: center;
+}
+
+.prova-grid > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.prova-grid strong{
+    font-family: var(--fonte-titulo);
+    font-size: 2.2rem;
+    color: var(--dourado-crosta);
+}
+
+.prova-grid span{
+    font-size: 0.88rem;
+    color: #DCEFE1;
+}
+
+@media (min-width:760px){
+  .prova-grid{
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    gap: 64px;
+  }
+}
+
+  .prova-grid span{ font-size:0.88rem; color:#DCEFE1; }
+
+  /* ============================================================
+     SEÇÃO GENÉRICA — cabeçalho de seção
+     ============================================================ */
+  .secao{ padding:80px 0; }
+  .secao-cabecalho{
+    max-width:640px;
+    margin:0 auto 48px;
+    text-align:center;
+  }
+  .secao-cabecalho .etiqueta-fita{ margin-bottom:18px; }
+  .secao-cabecalho h2{ font-size:clamp(1.8rem, 4vw, 2.4rem); }
+  .secao-cabecalho p{ margin-top:14px; color:var(--carvao-suave); font-size:1.05rem; }
+
+  /* ---------- O que você ganha ---------- */
+  .beneficios{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  @media (min-width:700px){ .beneficios{ grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:1020px){ .beneficios{ grid-template-columns:repeat(3,1fr); } }
+  .cartao-beneficio{
+    background:var(--branco-muçarela);
+    border:2px solid var(--carvao);
+    border-radius:var(--raio-medio);
+    padding:28px 24px;
+    box-shadow:var(--sombra-card);
+  }
+  .icone-fatia{
+    width:52px; height:52px;
+    border-radius:50%;
+    background:var(--dourado-crosta);
+    border:2px solid var(--carvao);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.4rem;
+    margin-bottom:16px;
+  }
+  .cartao-beneficio h3{ font-size:1.15rem; margin-bottom:8px; }
+  .cartao-beneficio p{ color:var(--carvao-suave); font-size:0.95rem; }
+
+  /* ---------- Como funciona — passos em "fatias" ---------- */
+  .como-funciona-fundo{ background:var(--branco-muçarela); }
+  .passos{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    counter-reset:fatia;
+    border-radius:var(--raio-grande);
+    overflow:hidden;
+    border:2px solid var(--carvao);
+  }
+  @media (min-width:820px){ .passos{ grid-template-columns:repeat(4,1fr); } }
+  .passo{
+    counter-increment:fatia;
+    background:var(--creme-massa);
+    padding:30px 24px;
+    position:relative;
+    border-bottom:2px solid var(--carvao);
+  }
+  @media (min-width:820px){
+    .passo{ border-bottom:none; border-right:2px solid var(--carvao); }
+    .passo:last-child{ border-right:none; }
+  }
+  .passo:last-child{ border-bottom:none; }
+  .passo:nth-child(odd){ background:#FFF2D6; }
+  .passo::before{
+    content:counter(fatia) "/4";
+    font-family:var(--fonte-titulo);
+    font-weight:800;
+    font-size:0.85rem;
+    color:var(--vermelho-molho);
+    background:var(--branco-muçarela);
+    border:2px solid var(--carvao);
+    border-radius:50%;
+    width:44px; height:44px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+  }
+  .passo h3{ font-size:1.05rem; margin-bottom:8px; }
+  .passo p{ font-size:0.92rem; color:var(--carvao-suave); }
+
+  /* ---------- Para quem é / não é ---------- */
+  .publico-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  @media (min-width:760px){ .publico-grid{ grid-template-columns:1fr 1fr; } }
+  .publico-cartao{
+    border-radius:var(--raio-grande);
+    padding:32px;
+  }
+  .publico-cartao.sim{
+    background:var(--verde-manjericao);
+    color:var(--branco-muçarela);
+  }
+  .publico-cartao.nao{
+    background:var(--carvao);
+    color:#F1E6D3;
+  }
+  .publico-cartao h3{
+    color:inherit;
+    font-size:1.3rem;
+    margin-bottom:18px;
+  }
+  .publico-cartao ul li{
+    display:flex;
+    gap:10px;
+    margin-bottom:12px;
+    font-size:0.97rem;
+  }
+  .publico-cartao ul li span.marca-item{ font-weight:800; }
+  .publico-cartao.sim span.marca-item{ color:var(--dourado-crosta); }
+  .publico-cartao.nao span.marca-item{ color:#E88; }
+
+  /* ---------- Depoimentos ---------- */
+  .depoimentos-fundo{ background:var(--branco-muçarela); }
+  .aviso-depoimentos{
+    max-width:640px;
+    margin:0 auto 36px;
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--carvao-suave);
+    background:#FFF2D6;
+    border:2px dashed var(--dourado-crosta-escuro);
+    border-radius:var(--raio-medio);
+    padding:14px 18px;
+  }
+  .depoimentos-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  @media (min-width:760px){ .depoimentos-grid{ grid-template-columns:repeat(3,1fr); } }
+  .cartao-depoimento{
+    background:var(--creme-massa);
+    border:2px solid var(--carvao);
+    border-radius:var(--raio-medio);
+    padding:26px;
+    position:relative;
+  }
+  .cartao-depoimento .estrelas{ color:var(--dourado-crosta-escuro); font-size:1rem; margin-bottom:12px; }
+  .cartao-depoimento p.fala{ font-size:0.97rem; color:var(--carvao); margin-bottom:18px; }
+  .autor{ display:flex; align-items:center; gap:12px; }
+  .avatar-iniciais{
+    width:42px; height:42px;
+    border-radius:50%;
+    background:var(--vermelho-molho);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--fonte-titulo); font-weight:700; font-size:0.85rem;
+  }
+  .autor strong{ display:block; font-size:0.92rem; }
+  .autor small{ color:var(--carvao-suave); font-size:0.8rem; }
+
+  /* ---------- Oferta ---------- */
+  .oferta{
+    background:linear-gradient(180deg, var(--carvao) 0%, var(--vermelho-molho-escuro) 100%);
+    color:var(--branco-muçarela);
+    padding:80px 0;
+  }
+  .Escolha_o_tamanho{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    margin-bottom:40px;
+    color:#ffffff
+  }
+  .oferta .secao-cabecalho p{ color:#F0D9BC; }
+  .planos{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    max-width:920px;
+    margin:0 auto;
+  }
+  @media (min-width:760px){ .planos{ grid-template-columns:repeat(3,1fr); } }
+  .plano{
+    background:var(--branco-muçarela);
+    color:var(--carvao);
+    border-radius:var(--raio-grande);
+    padding:30px 26px;
+    border:3px solid var(--carvao);
+    display:flex;
+    flex-direction:column;
+  }
+  .plano.destaque{
+    border-color:var(--dourado-crosta);
+    box-shadow:0 0 0 4px rgba(242,183,5,0.35);
+    transform:translateY(-8px);
+  }
+  .plano .rotulo-popular{
+    align-self:flex-start;
+    background:var(--dourado-crosta);
+    color:var(--carvao);
+    font-family:var(--fonte-titulo);
+    font-weight:700;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    padding:4px 12px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  .plano h3{ font-size:1.2rem; margin-bottom:6px; }
+  .plano .preco{
+    font-family:var(--fonte-titulo);
+    font-size:2.1rem;
+    color:var(--vermelho-molho);
+    margin:10px 0 4px;
+  }
+  .plano .preco small{ font-size:0.9rem; font-family:var(--fonte-texto); color:var(--carvao-suave); }
+  .plano ul{ margin:18px 0 26px; flex-grow:1; }
+  .plano ul li{
+    font-size:0.92rem;
+    padding:7px 0;
+    border-bottom:1px dashed #E4D6BE;
+    display:flex;
+    gap:8px;
+  }
+  .plano ul li:last-child{ border-bottom:none; }
+
+  /* ---------- Garantia ---------- */
+  .garantia{
+    background:var(--creme-massa);
+    padding:80px 0;
+  }
+  .garantia-caixa{
+    max-width:820px;
+    margin:0 auto;
+    background:var(--branco-muçarela);
+    border:2px solid var(--carvao);
+    border-radius:var(--raio-grande);
+    padding:44px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:28px;
+    align-items:center;
+    box-shadow:var(--sombra-card);
+  }
+  @media (min-width:700px){ .garantia-caixa{ grid-template-columns:auto 1fr; } }
+  .selo-garantia{
+    width:120px; height:120px;
+    border-radius:50%;
+    background:var(--dourado-crosta);
+    border:3px dashed var(--carvao);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    font-family:var(--fonte-titulo);
+    font-weight:800;
+    font-size:0.85rem;
+    line-height:1.15;
+    padding:10px;
+    margin:0 auto;
+  }
+  .garantia-caixa h3{ font-size:1.3rem; margin-bottom:10px; }
+  .garantia-caixa p{ color:var(--carvao-suave); font-size:0.97rem; }
+
+  /* ---------- FAQ ---------- */
+  .faq-lista{ max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
+  .faq-item{
+    background:var(--branco-muçarela);
+    border:2px solid var(--carvao);
+    border-radius:var(--raio-medio);
+    overflow:hidden;
+  }
+  .faq-pergunta{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:18px 22px;
+    font-family:var(--fonte-titulo);
+    font-weight:600;
+    font-size:1rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    color:var(--carvao);
+  }
+  .faq-pergunta .sinal{
+    font-size:1.3rem;
+    color:var(--vermelho-molho);
+    transition:transform .2s ease;
+    flex-shrink:0;
+    margin-left:12px;
+  }
+  .faq-item.aberto .sinal{ transform:rotate(45deg); }
+  .faq-resposta{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .25s ease;
+    padding:0 22px;
+  }
+  .faq-item.aberto .faq-resposta{ padding-bottom:20px; }
+  .faq-resposta p{ color:var(--carvao-suave); font-size:0.94rem; }
+
+  /* ---------- CTA final ---------- */
+  .cta-final{
+    background:radial-gradient(ellipse at 50% 0%, rgba(242,183,5,0.25), transparent 60%), var(--verde-manjericao-escuro);
+    color:var(--branco-muçarela);
+    padding:80px 0;
+    text-align:center;
+  }
+  .cta-final h2{ color:var(--branco-muçarela); font-size:clamp(1.8rem,4vw,2.6rem); }
+  .cta-final p{ margin:16px auto 32px; max-width:520px; color:#DCEFE1; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--carvao);
+    color:#C9B79C;
+    padding:40px 0 28px;
+    font-size:0.85rem;
+  }
+  .footer-topo{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:24px;
+    border-bottom:1px solid #4A3A2C;
+    margin-bottom:20px;
+  }
+  .footer-marca{ display:flex; align-items:center; gap:10px; }
+  .footer-marca img{ width:38px; height:38px; border-radius:50%; }
+  .footer-marca strong{ color:var(--branco-muçarela); font-family:var(--fonte-titulo); }
+  footer nav{ display:flex; gap:20px; flex-wrap:wrap; }
