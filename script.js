@@ -52,7 +52,30 @@ document.addEventListener('DOMContentLoaded', function(){
 
   carrossel.addEventListener('mouseenter', () => clearInterval(autoPlay));
   carrossel.addEventListener('mouseleave', () => autoPlay = setInterval(passarAutomatico, TEMPO_AUTOPLAY));
+// ---------- SWIPE (arrastar no touch) ----------
+  let toqueInicioX = 0;
+  let toqueFimX = 0;
 
+  carrossel.addEventListener('touchstart', (e) => {
+    toqueInicioX = e.touches[0].clientX;
+    clearInterval(autoPlay);
+  }, { passive: true });
+
+  carrossel.addEventListener('touchend', (e) => {
+    toqueFimX = e.changedTouches[0].clientX;
+    const distancia = toqueInicioX - toqueFimX;
+    const limiteMinimo = 40;
+
+    if(distancia > limiteMinimo){
+      indice = (indice + 1) % imagens.length;
+      atualizarSlide();
+    } else if(distancia < -limiteMinimo){
+      indice = (indice - 1 + imagens.length) % imagens.length;
+      atualizarSlide();
+    }
+
+    autoPlay = setInterval(passarAutomatico, TEMPO_AUTOPLAY);
+  }, { passive: true });
 
   // ---------- LIGHTBOX (ampliar foto do carrossel) ----------
 
