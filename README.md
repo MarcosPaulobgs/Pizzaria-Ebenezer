@@ -35,7 +35,7 @@ Como parte do meu aprendizado em Engenharia de Software, pretendo implementar as
 ## 🛠️ Como visualizar o projeto
 
 O projeto está publicado e pode ser acessado diretamente através do GitHub Pages:
-👉 [Acesse a Landing Page da Pizzaria Ebenézer](https://github.io)
+👉 [Acesse a Landing Page da Pizzaria Ebenézer]([https://github.io](https://marcospaulobgs.github.io/Pizzaria-Ebenezer/))
 
 Se preferir rodar localmente:
 1. Clone o repositório:
