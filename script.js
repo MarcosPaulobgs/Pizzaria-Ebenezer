@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(){
 
+  // Trava contra execução duplicada do script
+  if(window.__ebenezerScriptRodou) return;
+  window.__ebenezerScriptRodou = true;
+
   // ---------- CARROSSEL ----------
   const TEMPO_AUTOPLAY = 2000;
 
