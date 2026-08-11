@@ -62,7 +62,10 @@ h1,h2,h3,h4{
 .destaque-vermelho{ color:var(--vermelho-molho); }
 
 @media (prefers-reduced-motion: reduce){
-    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+    *{
+      transition-duration: 0.001ms !important;
+      /* ... */
+    }
 }
 
 :focus-visible{
@@ -518,7 +521,7 @@ nav.menu-desktop a:hover::after {
 .faq-resposta{
     max-height:0;
     overflow:hidden;
-    transition:max-height .25s ease;
+    transition:max-height .5s ease;
     padding:0 22px;
 }
 .faq-item.aberto .faq-resposta{ padding-bottom:20px; }
