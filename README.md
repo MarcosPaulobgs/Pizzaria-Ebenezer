@@ -6,14 +6,6 @@ Uma Landing Page moderna, rápida e totalmente responsiva criada para simular a 
 
 ---
 
-## 🚀 Tecnologias Utilizadas
-
-* **HTML5** - Estruturação semântica de toda a página.
-* **CSS3** - Estilização customizada, design responsivo e efeitos visuais.
-* **JavaScript** - Interações dinâmicas (como o carrossel de fotos e o menu de perguntas frequentes).
-
----
-
 ## 🎨 Funcionalidades do Projeto
 
 * 📱 **Design Responsivo:** Adaptado perfeitamente para celulares, tablets e computadores.
