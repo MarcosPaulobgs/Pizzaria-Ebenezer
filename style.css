@@ -14,6 +14,7 @@
 :root{
     --vermelho-molho:#C1272D;
     --vermelho-molho-escuro:#8F1B20;
+    --vermelho-noite:#3A1013;
     --verde-manjericao:#1B5E3A;
     --verde-manjericao-escuro:#123F27;
     --dourado-crosta:#F2B705;
@@ -138,7 +139,6 @@ header{
     top:0;
     z-index:100;
     background:var(--branco-muçarela);
-    border-bottom:3px solid var(--carvao);
 }
 .header-conteudo{
     display:flex;
@@ -195,9 +195,9 @@ nav.menu-desktop a:hover::after{ width:100%; }
      ============================================================ */
 .hero{
     position: relative;
-    background:
-      radial-gradient(ellipse at 50% 120%, rgba(242,183,5,0.35), transparent 60%),
-      linear-gradient(180deg, var(--vermelho-molho-escuro) 0%, var(--carvao) 100%);
+    background: linear-gradient(180deg,
+        var(--dourado-crosta-escuro) 0%,
+        var(--vermelho-molho-escuro) 55%);
     color:var(--branco-muçarela);
     padding:64px 0 0;
     overflow:hidden;
@@ -207,8 +207,8 @@ nav.menu-desktop a:hover::after{ width:100%; }
     content:"";
     position:absolute;
     left:0; right:0; bottom:-1px;
-    height:120px;
-    background:linear-gradient(180deg, transparent, var(--carvao));
+    height:1px;
+    background:transparent;
     pointer-events:none;
 }
 
@@ -366,7 +366,9 @@ nav.menu-desktop a:hover::after{ width:100%; }
 
 /* ---------- Oferta / Cardápio ---------- */
 .oferta{
-    background:linear-gradient(180deg, var(--carvao) 0%, var(--vermelho-molho-escuro) 100%);
+    background: linear-gradient(180deg,
+        var(--vermelho-molho-escuro) 0%,
+        var(--vermelho-noite) 100%);
     color:var(--branco-muçarela);
     padding:80px 0;
 }
