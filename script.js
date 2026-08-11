@@ -50,6 +50,51 @@ document.addEventListener('DOMContentLoaded', function(){
   carrossel.addEventListener('mouseleave', () => autoPlay = setInterval(passarAutomatico, TEMPO_AUTOPLAY));
 
 
+  // ---------- LIGHTBOX (ampliar foto do carrossel) ----------
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxFechar = document.getElementById('lightbox-fechar');
+  const lightboxAnterior = document.getElementById('lightbox-anterior');
+  const lightboxProxima = document.getElementById('lightbox-proxima');
+  let indiceLightbox = 0;
+
+  function mostrarNoLightbox(i){
+    indiceLightbox = i;
+    lightboxImg.src = imagens[indiceLightbox].src;
+    lightboxImg.alt = imagens[indiceLightbox].alt;
+  }
+
+  imagens.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      mostrarNoLightbox(i);
+      lightbox.classList.add('aberto');
+    });
+  });
+
+  function fecharLightbox(){
+    lightbox.classList.remove('aberto');
+  }
+
+  lightboxProxima.addEventListener('click', () => {
+    mostrarNoLightbox((indiceLightbox + 1) % imagens.length);
+  });
+
+  lightboxAnterior.addEventListener('click', () => {
+    mostrarNoLightbox((indiceLightbox - 1 + imagens.length) % imagens.length);
+  });
+
+  lightboxFechar.addEventListener('click', fecharLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) fecharLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(!lightbox.classList.contains('aberto')) return;
+    if(e.key === 'Escape') fecharLightbox();
+    if(e.key === 'ArrowRight') mostrarNoLightbox((indiceLightbox + 1) % imagens.length);
+    if(e.key === 'ArrowLeft') mostrarNoLightbox((indiceLightbox - 1 + imagens.length) % imagens.length);
+  });
+
   // ---------- ACORDEÃO DO FAQ ----------
   document.querySelectorAll('.faq-pergunta').forEach(function(botao){
     botao.addEventListener('click', function(){
