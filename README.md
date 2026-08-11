@@ -35,7 +35,7 @@ Como parte do meu aprendizado em Engenharia de Software, pretendo implementar as
 ## 🛠️ Como visualizar o projeto
 
 O projeto está publicado e pode ser acessado diretamente através do GitHub Pages:
-👉 [Acesse a Landing Page da Pizzaria Ebenézer]([https://github.io](https://marcospaulobgs.github.io/Pizzaria-Ebenezer/))
+👉 [Acesse a Landing Page da Pizzaria Ebenézer](https://marcospaulobgs.github.io/Pizzaria-Ebenezer/)
 
 Se preferir rodar localmente:
 1. Clone o repositório:
@@ -48,4 +48,4 @@ git clone https://github.com
 
 ## 👤 Autor
 
-* **Marcos Paulo** - [Meu GitHub](https://github.com/marcospaulobgs)
+* **Marcos Paulo** - [Meu GitHub](https://github.com/MarcosPaulobgs)
