@@ -140,11 +140,20 @@ header{
     z-index:100;
     background:var(--branco-muçarela);
 }
-.header-conteudo{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:12px 24px;
+.header-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+}
+
+/* Junta o menu com o botão na direita */
+nav.menu-desktop {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-left: auto; /* Empurra o menu para a direita */
+    margin-right: 24px; /* Espaço entre o menu e o botão PEÇA AGORA */
 }
 .marca{
     display:flex;
@@ -170,26 +179,65 @@ header{
     color:var(--verde-manjericao);
     letter-spacing:0.06em;
 }
-nav.menu-desktop{
-    display:flex;
-    gap:32px;
-    font-weight:700;
-    font-size:0.95rem;
+nav.menu-desktop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
-nav.menu-desktop a{ position:relative; padding:6px 0; }
-nav.menu-desktop a::after{
-    content:"";
-    position:absolute;
-    left:0; bottom:0;
-    width:0%; height:3px;
-    background:var(--dourado-crosta-escuro);
-    transition:width .2s ease;
-}
-nav.menu-desktop a:hover::after{ width:100%; }
-.header-cta{ display:none; }
-@media (min-width:860px){ .header-cta{ display:inline-flex; padding:12px 24px; font-size:0.9rem; } }
-@media (max-width:859px){ nav.menu-desktop{ display:none; } }
 
+nav.menu-desktop a {
+    position: relative;
+    padding: 8px 16px;
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--carvao);
+    background: #F4E8D6; /* Fundo suave */
+    border-radius: 12px 12px 0 0; /* Arredondado só no topo para encaixar a barra embaixo */
+    transition: all 0.2s ease;
+}
+
+/* Reativa a barra/tracinho embaixo */
+nav.menu-desktop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+nav.menu-desktop a {
+    position: relative;
+    padding: 10px 20px;
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--carvao);
+    background: #F4E8D6;       /* Tom creme de fundo */
+    border-radius: 16px;        /* Arredonda TODAS as 4 pontas igualmente */
+    overflow: hidden;           /* Garante que o tracinho acompanhe a curva da ponta inferior */
+    transition: all 0.2s ease;
+}
+
+/* Linha/tracinho animado no fundo do botão */
+nav.menu-desktop a::after {
+    content: "";
+    position: absolute;
+    left: 0; 
+    bottom: 0;
+    width: 0%; 
+    height: 4px;
+    background: var(--dourado-crosta-escuro);
+    transition: width 0.25s ease;
+}
+
+/* Efeito ao passar o mouse */
+nav.menu-desktop a:hover {
+    color: var(--vermelho-molho);
+    background: #EFE0C9;
+}
+
+nav.menu-desktop a:hover::after {
+    width: 100%; /* Faz o tracinho deslizar até o final */
+}
 /* ============================================================
      HERO
      ============================================================ */
