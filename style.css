@@ -231,6 +231,15 @@ nav.menu-desktop a::after {
     background: var(--dourado-crosta-escuro);
     transition: width 0.25s ease;
 }
+.header-cta{ display:none; }
+
+@media (min-width:900px){
+    .header-cta{ display:inline-flex; padding:12px 24px; font-size:0.9rem; }
+}
+
+@media (max-width:899px){
+    nav.menu-desktop{ display:none; }
+}
 
 /* Efeito ao passar o mouse */
 nav.menu-desktop a:hover {
