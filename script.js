@@ -95,6 +95,27 @@ document.addEventListener('DOMContentLoaded', function(){
     if(e.key === 'ArrowLeft') mostrarNoLightbox((indiceLightbox - 1 + imagens.length) % imagens.length);
   });
 
+
+  // ---------- TEMA CLARO / ESCURO ----------
+  const interruptorTema = document.getElementById('interruptor-tema');
+  const raiz = document.documentElement;
+
+  function aplicarTema(tema){
+    raiz.setAttribute('data-tema', tema);
+    interruptorTema.setAttribute('aria-pressed', tema === 'escuro');
+    localStorage.setItem('tema-ebenezer', tema);
+  }
+
+  const temaSalvo = localStorage.getItem('tema-ebenezer');
+  const prefereEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  aplicarTema(temaSalvo || (prefereEscuro ? 'escuro' : 'claro'));
+
+  interruptorTema.addEventListener('click', () => {
+    const atual = raiz.getAttribute('data-tema');
+    aplicarTema(atual === 'escuro' ? 'claro' : 'escuro');
+  });
+
+
   // ---------- ACORDEÃO DO FAQ ----------
   document.querySelectorAll('.faq-pergunta').forEach(function(botao){
     botao.addEventListener('click', function(){
